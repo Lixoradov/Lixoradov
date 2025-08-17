@@ -1,23 +1,25 @@
 /* ========================= */
 /* Подключение шрифтов */
 @font-face {
-  font-family: 'MOWER';
+  font-family: 'MOWER-PersonalUse';
   src: url('MOWER-PersonalUse.otf') format('opentype');
 }
+
 @font-face {
-  font-family: 'defwriter_basecyr';
+  font-family: 'Defwriter Basecyr';
   src: url('defwriter_basecyr.ttf') format('truetype');
 }
 
 /* ========================= */
 /* Основной фон */
 body {
-  font-family: 'defwriter_basecyr', sans-serif;
+  font-family: 'Defwriter Basecyr', sans-serif;
   margin: 0;
-  padding: 30px 15px;
+  padding: 40px 20px;
   color: #fff;
-  background-color: #2b2b2b; /* серо-чёрный фон */
-  background-image: url('https://images.unsplash.com/photo-1606813909355-46e9c7a3e9e2?auto=format&fit=crop&w=1400&q=80'); /* черный рыцарь */
+
+  background-color: #2b2b2b;
+  background-image: url('berserk-bg.jpg'); /* локальный фон */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -25,26 +27,19 @@ body {
 }
 
 /* ========================= */
-/* Заголовки */
-h1, h2 {
-  text-align: center;
-}
-
+/* Заголовок Lixoradov */
 h1 {
-  font-family: 'MOWER', sans-serif;
-  font-size: 2.8em;
-  margin-bottom: 30px;
+  font-family: 'MOWER-PersonalUse', sans-serif;
+  font-size: 3.2em;
+  text-align: center;
+  margin-bottom: 40px;
+
   background: linear-gradient(90deg, #ff005c, #ff7f50, #00f0ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
   text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
   letter-spacing: 2px;
-}
-
-h2 {
-  margin: 30px 0 20px;
-  color: #00ffc8;
-  font-size: 1.4em;
 }
 
 /* ========================= */
@@ -56,85 +51,58 @@ h2 {
   margin: 0 auto;
 }
 
+/* ========================= */
+/* Анимация мигающих карточек */
+@keyframes menu-glitch {
+  0% { box-shadow: 0 0 5px #00ff00, 0 0 10px #ffff00, 0 0 15px #ff0000, 0 0 20px #00f; }
+  25% { box-shadow: 0 0 10px #ff0000, 0 0 15px #00f0ff, 0 0 20px #00ff00, 0 0 25px #ffff00; }
+  50% { box-shadow: 0 0 15px #ffff00, 0 0 20px #ff0000, 0 0 25px #00ff00, 0 0 30px #00f; }
+  75% { box-shadow: 0 0 10px #00ff00, 0 0 15px #ffff00, 0 0 20px #ff0000, 0 0 25px #00f; }
+  100% { box-shadow: 0 0 5px #ff0000, 0 0 10px #00f0ff, 0 0 15px #00ff00, 0 0 20px #ffff00; }
+}
+
 .user-card {
   display: flex;
   align-items: center;
   background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 16px;
-  padding: 12px 16px;
-  margin-bottom: 14px;
+  padding: 15px 20px;
+  margin-bottom: 18px;
   text-decoration: none;
   color: inherit;
+  transition: all 0.35s ease;
+  backdrop-filter: blur(8px);
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(8px);
+  animation: menu-glitch 2s infinite;
 }
 
-/* ========================= */
-/* Анимация мигающей рамки */
-@keyframes glitch-colors {
-  0%   { box-shadow: 0 0 10px #00ff00, 0 0 20px #ffff00; }
-  25%  { box-shadow: 0 0 10px #ff0000, 0 0 20px #0000ff; }
-  50%  { box-shadow: 0 0 10px #ffff00, 0 0 20px #00ff00; }
-  75%  { box-shadow: 0 0 10px #0000ff, 0 0 20px #ff0000; }
-  100% { box-shadow: 0 0 10px #00ff00, 0 0 20px #ffff00; }
-}
-
-.user-card::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border-radius: 16px;
-  pointer-events: none;
-  z-index: 2;
-  animation: glitch-colors 1.5s infinite alternate;
+.user-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  border-color: #00ffc8;
 }
 
 /* ========================= */
 /* Аватарки */
 .user-avatar {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   border-radius: 14px;
-  background-size: cover;
-  background-position: center;
-  margin-right: 15px;
+  overflow: hidden;
   flex-shrink: 0;
-  transition: 0.4s;
-  position: relative;
+  margin-right: 15px;
 }
 
-.user-avatar::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120%;
-  height: 60%;
-  background: radial-gradient(circle, rgba(255,255,200,0.8) 0%, rgba(255,255,150,0.2) 60%, transparent 100%);
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  border-radius: 50%;
-  transition: all 0.4s ease;
-  pointer-events: none;
-  filter: blur(8px);
-}
-
-.user-card:hover .user-avatar::after {
-  transform: translate(-50%, -50%) scale(1.4);
-  opacity: 1;
-}
-
-.user-card:hover .user-avatar {
-  filter: brightness(1.3) saturate(1.3);
-  box-shadow: 0 0 25px #fff38a, 0 0 45px #fffbcc;
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ========================= */
-/* Тексты юзеров */
+/* Текст внутри карточки */
 .user-name {
   font-size: 20px;
   margin: 0;
@@ -146,6 +114,15 @@ h2 {
   font-size: 14px;
   margin: 4px 0 0;
   color: #aaa;
+}
+
+/* ========================= */
+/* Подзаголовки */
+h2 {
+  text-align:center;
+  margin:30px 0 20px;
+  color:#00ffc8;
+  font-size: 1.4em;
 }
 
 /* ========================= */
