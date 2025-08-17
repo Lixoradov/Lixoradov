@@ -1,0 +1,140 @@
+/* ========================= */
+/* Подключение шрифта MOWER-PersonalUse для заголовков */
+@font-face {
+  font-family: 'MOWER-PersonalUse';
+  src: url('MOWER-PersonalUse.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ========================= */
+/* Подключение основного шрифта defwriter_basecyr */
+@font-face {
+  font-family: 'Defwriter';
+  src: url('defwriter_basecyr.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ========================= */
+/* Основной фон и глобальный шрифт */
+body {
+  font-family: 'Defwriter', sans-serif; /* теперь весь сайт этим шрифтом */
+  margin: 0;
+  padding: 40px 20px;
+  color: #fff;
+
+  background-color: #2b2b2b; /* серо-чёрный фон */
+  background-image: url('https://images.unsplash.com/photo-1606813909355-46e9c7a3e9e2?auto=format&fit=crop&w=1400&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+}
+
+/* ========================= */
+/* Заголовок Lixoradov */
+h1 {
+  font-family: 'MOWER-PersonalUse', sans-serif;
+  font-size: 3.8em;
+  text-align: center;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, #ff005c, #ff7f50, #00f0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-family: 'MOWER-PersonalUse', sans-serif;
+  text-align:center;
+  margin:30px 0 20px;
+  color:#00ffc8;
+  font-size: 1.4em;
+}
+
+/* ========================= */
+/* Списки юзеров */
+.user-list {
+  list-style: none;
+  padding: 0;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 15px 20px;
+  margin-bottom: 18px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.35s ease;
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+}
+
+.user-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 0 25px rgba(0,255,180,0.5);
+  border-color: #00ffc8;
+}
+
+/* ========================= */
+/* Аватарки-тачки */
+.user-avatar {
+  width: 100px;
+  height: 50px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  margin-right: 15px;
+  flex-shrink: 0;
+  transition: 0.4s transform, 0.4s box-shadow, 0.4s filter;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.user-avatar::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 80%;
+  height: 20%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.4), transparent);
+  transform: rotate(-20deg);
+  opacity: 0.6;
+  border-radius: 8px;
+}
+
+.user-card:hover .user-avatar {
+  transform: translateY(-4px) scale(1.05) rotate(-1deg);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  filter: brightness(1.2) saturate(1.2);
+}
+
+.user-name {
+  font-size: 20px;
+  margin: 0;
+  font-weight: bold;
+  color: #fff;
+}
+
+.user-handle {
+  font-size: 14px;
+  margin: 4px 0 0;
+  color: #aaa;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #bbb;
+}
