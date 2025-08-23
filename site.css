@@ -1,135 +1,121 @@
-/* ========================= */
-/* Подключение шрифтов */
+/* Подключаем шрифты */
 @font-face {
-  font-family: 'MOWER-PersonalUse';
-  src: url('MOWER-PersonalUse.otf') format('opentype');
+  font-family: 'BulbasaurSP';
+  src: url('BulbasaurSP.otf') format('opentype');
 }
 
 @font-face {
-  font-family: 'Defwriter Basecyr';
+  font-family: 'Defwriter';
   src: url('defwriter_basecyr.ttf') format('truetype');
 }
 
-/* ========================= */
-/* Основной фон */
+/* Общий стиль */
 body {
-  font-family: 'Defwriter Basecyr', sans-serif;
   margin: 0;
-  padding: 40px 20px;
+  padding: 20px;
+  background: #0a0a0a;
   color: #fff;
-
-  background-color: #2b2b2b;
-  background-image: url('berserk-bg.jpg'); /* локальный фон */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-blend-mode: multiply;
+  font-family: 'BulbasaurSP', sans-serif;
 }
 
-/* ========================= */
-/* Заголовок Lixoradov */
+/* Заголовок */
 h1 {
-  font-family: 'MOWER-PersonalUse', sans-serif;
-  font-size: 3.2em;
+  font-size: 42px;
   text-align: center;
-  margin-bottom: 40px;
-
-  background: linear-gradient(90deg, #ff005c, #ff7f50, #00f0ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-  letter-spacing: 2px;
+  margin-bottom: 30px;
+  font-family: 'Defwriter', sans-serif; /* Заголовок отдельным шрифтом */
 }
 
-/* ========================= */
-/* Списки юзеров */
+/* Подзаголовки */
+h2 {
+  font-size: 26px;
+  margin: 25px 0 15px;
+  border-left: 4px solid #ff7f50;
+  padding-left: 10px;
+}
+
+/* Список пользователей */
 .user-list {
   list-style: none;
   padding: 0;
-  max-width: 520px;
-  margin: 0 auto;
+  margin: 0 0 25px;
+  display: grid;
+  gap: 15px;
 }
 
-/* ========================= */
-/* Анимация мигающих карточек */
-@keyframes menu-glitch {
-  0% { box-shadow: 0 0 5px #00ff00, 0 0 10px #ffff00, 0 0 15px #ff0000, 0 0 20px #00f; }
-  25% { box-shadow: 0 0 10px #ff0000, 0 0 15px #00f0ff, 0 0 20px #00ff00, 0 0 25px #ffff00; }
-  50% { box-shadow: 0 0 15px #ffff00, 0 0 20px #ff0000, 0 0 25px #00ff00, 0 0 30px #00f; }
-  75% { box-shadow: 0 0 10px #00ff00, 0 0 15px #ffff00, 0 0 20px #ff0000, 0 0 25px #00f; }
-  100% { box-shadow: 0 0 5px #ff0000, 0 0 10px #00f0ff, 0 0 15px #00ff00, 0 0 20px #ffff00; }
-}
-
+/* Карточка */
 .user-card {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 16px;
+  background: rgba(0,0,0,0.6);
   padding: 15px 20px;
-  margin-bottom: 18px;
+  border-radius: 15px;
   text-decoration: none;
-  color: inherit;
-  transition: all 0.35s ease;
-  backdrop-filter: blur(8px);
-  position: relative;
-  overflow: hidden;
-  animation: menu-glitch 2s infinite;
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+  transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
 }
 
-.user-card:hover {
-  transform: translateY(-4px) scale(1.03);
-  border-color: #00ffc8;
-}
-
-/* ========================= */
-/* Аватарки */
+/* Аватарка */
 .user-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 14px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   overflow: hidden;
-  flex-shrink: 0;
   margin-right: 15px;
+  flex-shrink: 0;
+  border: 2px solid #ff7f50;
 }
 
 .user-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
-/* ========================= */
-/* Текст внутри карточки */
+/* Имя */
 .user-name {
   font-size: 20px;
   margin: 0;
-  font-weight: bold;
+}
+
+/* Тег */
+.user-handle {
+  font-size: 14px;
+  color: #ccc;
+  margin: 3px 0 0;
+}
+
+/* Дополнительная инфа */
+.user-extra {
+  font-size: 13px;
+  margin: 2px 0 0;
   color: #fff;
 }
 
-.user-handle {
-  font-size: 14px;
-  margin: 4px 0 0;
-  color: #aaa;
+/* Ховер */
+.user-card:hover {
+  transform: scale(1.03);
+  background: rgba(255,127,80,0.2);
+  box-shadow: 0 8px 16px rgba(255,127,80,0.5);
 }
 
-/* ========================= */
-/* Подзаголовки */
-h2 {
-  text-align:center;
-  margin:30px 0 20px;
-  color:#00ffc8;
-  font-size: 1.4em;
+/* Клик (вспышка) */
+.user-card:active {
+  transform: scale(0.97);
+  background: linear-gradient(
+    90deg,
+    rgba(255,0,92,0.3),
+    rgba(255,127,80,0.3),
+    rgba(0,240,255,0.3)
+  );
+  box-shadow: 0 0 20px rgba(255,127,80,0.7);
 }
 
-/* ========================= */
 /* Футер */
 footer {
-  text-align: center;
   margin-top: 40px;
+  text-align: center;
   font-size: 14px;
-  color: #bbb;
+  color: #777;
 }
