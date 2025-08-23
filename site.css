@@ -65,22 +65,22 @@ h2 {
 }
 
 /* ========================= */
-/* Анимация свечения */
-@keyframes card-glow {
+/* Мягкое свечения карточек */
+@keyframes card-glow-soft {
   0% {
-    box-shadow: 0 0 10px #ff005c, 0 0 20px #ff7f50, 0 0 30px #00f0ff;
-  }
-  25% {
-    box-shadow: 0 0 15px #ff7f50, 0 0 25px #00f0ff, 0 0 35px #00ffc8;
+    box-shadow: 0 0 10px rgba(255,0,92,0.4),
+                0 0 20px rgba(255,127,80,0.3),
+                0 0 30px rgba(0,240,255,0.2);
   }
   50% {
-    box-shadow: 0 0 20px #00f0ff, 0 0 30px #00ffc8, 0 0 40px #ff005c;
-  }
-  75% {
-    box-shadow: 0 0 15px #00ffc8, 0 0 25px #ff005c, 0 0 35px #ff7f50;
+    box-shadow: 0 0 15px rgba(255,0,92,0.3),
+                0 0 25px rgba(255,127,80,0.25),
+                0 0 35px rgba(0,240,255,0.2);
   }
   100% {
-    box-shadow: 0 0 10px #ff005c, 0 0 20px #ff7f50, 0 0 30px #00f0ff;
+    box-shadow: 0 0 10px rgba(255,0,92,0.4),
+                0 0 20px rgba(255,127,80,0.3),
+                0 0 30px rgba(0,240,255,0.2);
   }
 }
 
@@ -97,10 +97,10 @@ h2 {
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
-  animation: card-glow 3s infinite alternate;
+  animation: card-glow-soft 4s infinite alternate;
 }
 
-/* Hover - дополнительный эффект */
+/* Hover - слегка ярче */
 .user-card:hover {
   transform: scale(1.03);
   background: rgba(0,0,0,0.7);
