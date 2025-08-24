@@ -1,10 +1,9 @@
 /* ========================= */
-/* Подключение шрифтов */
+/* Шрифты */
 @font-face {
   font-family: 'BulbasaurSP';
   src: url('BulbasaurSP.otf') format('opentype');
 }
-
 @font-face {
   font-family: 'Defwriter';
   src: url('defwriter_basecyr.ttf') format('truetype');
@@ -19,56 +18,40 @@ body {
   font-family: 'BulbasaurSP', sans-serif;
   color: #fff;
   overflow-x: hidden;
-  position: relative;
+  overflow-y: auto;
 }
 
-/* ========================= */
 /* Фон с частицами */
-#bg-canvas {
+#particles-js {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+  top:0; left:0;
+  width:100%; height:100%;
+  z-index:-1;
 }
 
-/* ========================= */
 /* Заголовок */
 h1 {
   font-family: 'Defwriter', sans-serif;
-  font-size: 3.2em;
+  font-size: 3em;
   text-align: center;
-  margin-bottom: 40px;
-
+  margin-bottom: 20px;
   background: linear-gradient(270deg, #ff005c, #ff7f50, #00f0ff, #00ffc8);
   background-size: 600% 600%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: text-gradient 10s ease infinite;
-
-  text-shadow:
-    0 0 5px #ff005c,
-    0 0 10px #ff7f50,
-    0 0 15px #00f0ff,
-    0 0 20px #fff;
 }
-
 @keyframes text-gradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* ========================= */
 /* Подзаголовки */
 h2 {
-  font-size: 1.5em;
-  margin: 30px 0 20px;
-  text-align: center;
-  color: #00ffc8;
-  opacity: 0;
-  animation: fade-in 1s forwards;
+  text-align:center; 
+  color:#00ffc8;
+  margin: 30px 0 15px;
 }
 
 /* ========================= */
@@ -76,37 +59,11 @@ h2 {
 .user-list {
   list-style: none;
   padding: 0;
-  max-width: 520px;
   margin: 0 auto 30px;
-  display: grid;
-  gap: 15px;
-}
-
-/* ========================= */
-/* Плавное свечения карточек */
-@keyframes card-glow-soft {
-  0% {
-    box-shadow: 0 0 10px rgba(255,0,92,0.4),
-                0 0 20px rgba(255,127,80,0.3),
-                0 0 30px rgba(0,240,255,0.2);
-  }
-  50% {
-    box-shadow: 0 0 15px rgba(255,0,92,0.3),
-                0 0 25px rgba(255,127,80,0.25),
-                0 0 35px rgba(0,240,255,0.2);
-  }
-  100% {
-    box-shadow: 0 0 10px rgba(255,0,92,0.4),
-                0 0 20px rgba(255,127,80,0.3),
-                0 0 30px rgba(0,240,255,0.2);
-  }
-}
-
-/* ========================= */
-/* Появление элементов */
-@keyframes fade-in {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 520px;
 }
 
 /* ========================= */
@@ -116,48 +73,46 @@ h2 {
   align-items: center;
   background: rgba(0,0,0,0.6);
   border-radius: 16px;
-  padding: 15px 20px;
+  padding: 12px 16px;
   text-decoration: none;
   color: inherit;
-  position: relative;
-  overflow: hidden;
   transition: all 0.3s ease;
-  animation: card-glow-soft 4s infinite alternate, fade-in 0.8s forwards;
+  animation: card-glow 4s infinite alternate;
+}
+
+@keyframes card-glow {
+  0% { box-shadow: 0 0 10px rgba(255,0,92,0.4); }
+  50% { box-shadow: 0 0 15px rgba(255,127,80,0.4); }
+  100% { box-shadow: 0 0 10px rgba(0,240,255,0.4); }
 }
 
 .user-card:hover {
-  transform: scale(1.03) rotateZ(1deg);
+  transform: translateY(-2px) scale(1.02);
   background: rgba(0,0,0,0.7);
 }
 
-/* Класс для эффекта клика */
-.user-card.clicked {
-  transform: scale(0.95);
-  box-shadow: 0 0 25px rgba(255,127,80,0.7);
-  background: linear-gradient(
-    90deg,
-    rgba(255,0,92,0.3),
-    rgba(255,127,80,0.3),
-    rgba(0,240,255,0.3)
-  );
-}
-
 /* ========================= */
-/* Аватарки */
+/* Аватарки с мягким свечением */
 .user-avatar {
   width: 50px;
   height: 50px;
   border-radius: 14px;
-  overflow: hidden;
-  flex-shrink: 0;
   margin-right: 15px;
+  flex-shrink: 0;
   border: 2px solid #00ffc8;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: avatar-glow 3s infinite alternate;
+}
+
+@keyframes avatar-glow {
+  0% { box-shadow: 0 0 5px #00ffc8, 0 0 10px #00f0ff; }
+  50% { box-shadow: 0 0 10px #00ffc8, 0 0 15px #00f0ff; }
+  100% { box-shadow: 0 0 5px #00ffc8, 0 0 10px #00f0ff; }
 }
 
 .user-avatar:hover {
-  box-shadow: 0 0 15px rgba(0,255,200,0.4);
-  transform: scale(1.05);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #00ffc8, 0 0 25px #00f0ff;
 }
 
 .user-avatar img {
@@ -165,24 +120,14 @@ h2 {
   height: 100%;
   object-fit: cover;
   display: block;
-  opacity: 0;
-  transform: scale(0.9);
-  animation: avatar-fade 0.6s forwards;
-}
-
-@keyframes avatar-fade {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 
 /* ========================= */
 /* Текст внутри карточки */
 .user-name {
-  font-size: 20px;
-  margin: 0;
+  font-size: 18px;
   font-weight: bold;
+  margin: 0;
   background: linear-gradient(270deg, #ff005c, #ff7f50, #00f0ff, #00ffc8);
   background-size: 600% 600%;
   -webkit-background-clip: text;
@@ -192,25 +137,24 @@ h2 {
 
 .user-handle {
   font-size: 14px;
-  margin: 4px 0 0;
   color: #aaa;
+  margin: 2px 0 0;
 }
 
 .user-extra {
   font-size: 13px;
-  margin: 2px 0 0;
   color: #fff;
+  margin: 2px 0 0;
 }
 
 /* ========================= */
 /* Футер */
 footer {
-  text-align: center;
-  margin-top: 40px;
+  text-align:center;
+  margin-top: 30px;
   font-size: 14px;
   color: #bbb;
 }
-
 footer:hover {
   color: #00ffc8;
   transition: color 0.3s ease;
