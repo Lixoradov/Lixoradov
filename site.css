@@ -14,21 +14,20 @@
 body {
   margin: 0;
   padding: 20px;
-  background-color: #1d1d1d;
   font-family: 'BulbasaurSP', sans-serif;
   color: #fff;
   overflow-x: hidden;
-  overflow-y: auto;
+
+  /* крутой фон с затемнением */
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url('fon.jpg'); /* вставь свой путь к картинке */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* Фон с частицами */
-#particles-js {
-  position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  z-index:-1;
-}
-
+/* ========================= */
 /* Заголовок */
 h1 {
   font-family: 'Defwriter', sans-serif;
@@ -92,28 +91,16 @@ h2 {
   background: rgba(0,0,0,0.7);
 }
 
-/* Эффект клика */
-.user-card.clicked {
-  transform: scale(0.95);
-  box-shadow: 0 0 25px rgba(255,127,80,0.7);
-  background: linear-gradient(
-    90deg,
-    rgba(255,0,92,0.3),
-    rgba(255,127,80,0.3),
-    rgba(0,240,255,0.3)
-  );
-}
-
 /* ========================= */
 /* Аватарки с мягким свечением */
 .user-avatar {
   width: 50px;
   height: 50px;
-  border-radius: 50%; /* круглая форма */
+  border-radius: 50%;
   margin-right: 15px;
   flex-shrink: 0;
   border: 2px solid #00ffc8;
-  overflow: hidden; /* чтобы изображение не вылазило */
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: avatar-glow 3s infinite alternate;
 }
